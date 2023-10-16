@@ -6,7 +6,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use('v1', api);
+app.use('/v1', api);
+
+app.use('*/', (req, res)=>{
+    return res.send("EcoBazar Api");
+})
 
 module.exports = app;
 

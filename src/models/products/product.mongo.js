@@ -1,8 +1,7 @@
-import mongoose from "mongoose";
-const { Schema } = mongoose;
-
+const mongoose = require('mongoose');
+const {Schema} = mongoose;
 const productSchema = new Schema({
-  name: {
+  product_name: {
     type: String,
     required: [true, "Name must be required"],
     unique: [true, "Name must be unique"],
@@ -19,8 +18,8 @@ const productSchema = new Schema({
     type: String,
     required: [true, "Unit must be required"],
     enum: {
-      value: ["kg", "gm", "pcs", "bundle", "each", "ltr", "ml"],
-      massage: "unit can't be {value}",
+      values: ["kg", "gm", "pcs", "bundle", "each", "ltr", "ml"],
+      massage: "unit can't be `{value}`",
     },
   },
   price: {
@@ -50,12 +49,13 @@ const productSchema = new Schema({
   tag: [String],
   badge: String,
   dis_badge: String,
+  dis_price: Number,
   product_type: [String],
   status: {
     type: String,
     enum: {
-      value: ["in-stock", "out-of-stock", "discontinued"],
-      massage: "status can't be {value}",
+      values: ["in-stock", "out-of-stock", "discontinued"],
+      massage: "status can't be `{value}`",
     },
   },
  
